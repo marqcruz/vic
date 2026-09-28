@@ -24,18 +24,51 @@ footer{width:min(1180px,calc(100% - 28px));margin:auto;border-top:1px solid rgba
 dialog{width:min(950px,94vw);padding:0;border-radius:26px;border:1px solid var(--line);background:#0d0812;color:white}dialog::backdrop{background:rgba(0,0,0,.82);backdrop-filter:blur(10px)}dialog img{width:100%;max-height:78vh;object-fit:contain;background:#000}.dtext{padding:18px 22px 24px}.close{position:absolute;right:12px;top:12px;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:rgba(0,0,0,.55);color:white;font-size:1.35rem}
 @media(max-width:850px){nav{display:none}.hero{grid-template-columns:1fr;gap:24px;padding-top:28px}.cover{order:-1;min-height:58vh}.head{display:block}.head>p{margin-top:12px}.photo,.photo:nth-child(1),.photo:nth-child(5),.photo:nth-child(8){grid-column:span 6}.cards{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){h1{font-size:clamp(2.8rem,14vw,4.8rem)}.copy{padding:24px;border-radius:26px}.photo,.photo:nth-child(1),.photo:nth-child(5),.photo:nth-child(8){grid-column:span 12;min-height:320px}.cards{grid-template-columns:1fr}footer{flex-direction:column}.musicplayer{grid-template-columns:92px 1fr auto;bottom:8px;padding:8px;gap:9px;border-radius:18px}.musicplayer iframe{width:92px;height:54px;border-radius:10px}.playercopy span{display:none}.playerbtns button{width:36px;height:36px}.playerbtns button:first-child{display:none}body{padding-bottom:92px}}
+
+/* Nosso Dia 3 — romantic modern theme */
+body{background:
+radial-gradient(circle at 12% 4%,rgba(255,90,170,.18),transparent 26%),
+radial-gradient(circle at 88% 14%,rgba(185,120,255,.18),transparent 28%),
+linear-gradient(180deg,#120812 0%,#241022 48%,#0b060e 100%)}
+header{background:rgba(18,8,18,.72);backdrop-filter:blur(20px)}
+.brand .mark{background:linear-gradient(135deg,#ff78bd,#d5a7ff);box-shadow:0 10px 34px rgba(255,120,189,.3)}
+.hero{min-height:90vh}
+.copy{border-radius:38px;background:linear-gradient(180deg,rgba(255,255,255,.11),rgba(255,255,255,.045))}
+h1{font-family:Georgia,"Times New Roman",serif;letter-spacing:-.025em}
+.primary{background:linear-gradient(135deg,#ff78bd,#d5a7ff)}
+.cover{border-radius:44px;box-shadow:0 30px 100px rgba(0,0,0,.4)}
+.photo{border-radius:28px;transition:transform .25s ease,box-shadow .25s ease}
+.photo:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.card{border-radius:28px;transition:transform .25s ease,background .25s ease}
+.card:hover{transform:translateY(-3px);background:rgba(255,255,255,.09)}
+.letter{background:linear-gradient(180deg,rgba(255,255,255,.11),rgba(255,255,255,.055))}
+.music.active{outline:2px solid rgba(255,140,210,.8);background:rgba(255,119,190,.12)}
+.hearts{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.heart{position:absolute;bottom:-70px;color:rgba(255,170,220,.2);font-size:20px;animation:heartFloat linear infinite}
+.heart:nth-child(1){left:5%;animation-duration:16s}.heart:nth-child(2){left:14%;animation-duration:20s;animation-delay:3s}.heart:nth-child(3){left:27%;animation-duration:17s;animation-delay:6s}.heart:nth-child(4){left:39%;animation-duration:21s;animation-delay:2s}.heart:nth-child(5){left:52%;animation-duration:18s;animation-delay:8s}.heart:nth-child(6){left:64%;animation-duration:22s;animation-delay:4s}.heart:nth-child(7){left:75%;animation-duration:17s;animation-delay:9s}.heart:nth-child(8){left:86%;animation-duration:20s;animation-delay:5s}.heart:nth-child(9){left:95%;animation-duration:15s;animation-delay:1s}
+@keyframes heartFloat{0%{transform:translateY(0) scale(.7) rotate(0);opacity:0}12%{opacity:1}100%{transform:translateY(-115vh) scale(1.55) rotate(18deg);opacity:0}}
+body>header,body>main,body>footer,body>.musicplayer,body>dialog{position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;background:rgba(255,255,255,.075);border:1px solid rgba(255,255,255,.11);font-weight:800;color:#ffd5ea;font-size:.84rem;letter-spacing:.03em}
+.hero-badge i{width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,#ff78bd,#d5a7ff);display:block}
+.quickstats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:26px}
+.quickstats div{padding:15px 16px;border-radius:20px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.08)}
+.quickstats strong{display:block;font-size:1.22rem}.quickstats span{color:var(--muted);font-size:.84rem}
+@media(max-width:560px){.quickstats{grid-template-columns:1fr 1fr 1fr}.quickstats div{padding:12px}.quickstats strong{font-size:1rem}.quickstats span{font-size:.74rem}}
 </style>
 </head>
 <body>
-<header><a class="brand" href="#inicio"><span class="mark">V</span><span>Para Victoria</span></a><nav><a href="#momentos">Momentos</a><a href="#videos">Vídeo</a><a href="#trilha">Nossa trilha</a><a href="#carta">Carta</a></nav></header>
+<div class="hearts" aria-hidden="true">
+<span class="heart">❤</span><span class="heart">❤</span><span class="heart">❤</span><span class="heart">❤</span><span class="heart">❤</span><span class="heart">❤</span><span class="heart">❤</span><span class="heart">❤</span><span class="heart">❤</span>
+</div>
+<header><a class="brand" href="#inicio"><span class="mark">V</span><span>Nosso Dia 3</span></a><nav><a href="#momentos">Momentos</a><a href="#videos">Vídeo</a><a href="#trilha">Nossa trilha</a><a href="#carta">Carta</a></nav></header>
 <main>
 <section class="hero" id="inicio">
-<div class="copy glass"><p class="eyebrow">NOSSA HISTÓRIA</p><h1>Algumas histórias merecem um lugar só delas.</h1><p class="sub">Um cantinho para lembrar de cada fase, cada viagem, cada risada e tudo o que ainda vamos viver. A galeria já começou a ganhar forma e ainda vai crescer muito.</p><div class="actions"><a class="btn primary" href="#momentos">Rever nossos momentos</a><button class="btn ghost" id="install" hidden>Instalar no celular</button></div></div>
-<div class="cover" id="cover"><div class="label"><strong>Nosso começo no app</strong><br><small>A primeira de muitas lembranças.</small></div></div>
+<div class="copy glass"><span class="hero-badge"><i></i> NOSSO DIA 3</span><h1>Um lugar só nosso, bonito como a nossa história.</h1><p class="sub">Um cantinho feito para guardar aquilo que é só nosso: os olhares, as viagens, as risadas, os beijos, as músicas e cada capítulo que ainda vamos viver.</p><div class="actions"><a class="btn primary" href="#momentos">Rever nossos momentos</a><button class="btn ghost" id="install" hidden>Instalar no celular</button></div><div class="quickstats"><div><strong>43</strong><span>fotos</span></div><div><strong>4</strong><span>vídeos</span></div><div><strong>6</strong><span>músicas</span></div></div></div>
+<div class="cover" id="cover"><div class="label"><strong>Nossa história</strong><br><small>Um pedacinho de nós, guardado para sempre.</small></div></div>
 </section>
-<section id="momentos"><div class="head"><div><p class="eyebrow">MEMÓRIAS</p><h2>Nossos registros</h2></div><p>A galeria agora já conta com 43 fotos e continua pronta para crescer até 100 fotos ou mais.</p></div><div class="grid" id="photos"></div></section>
-<section id="videos"><div class="head"><div><p class="eyebrow">EM MOVIMENTO</p><h2>Nossos momentos em vídeo</h2></div><p>Agora já temos 4 vídeos salvos para reviver nossos momentos.</p></div><div class="cards" id="videosGrid"></div></section>
-<section id="trilha"><div class="head"><div><p class="eyebrow">NOSSA TRILHA</p><h2>Músicas que lembram a gente</h2></div><p>Seis músicas especiais para abrir direto no YouTube Music.</p></div><div class="cards" id="songs"></div></section>
+<section id="momentos"><div class="head"><div><p class="eyebrow">MEMÓRIAS</p><h2>Memórias que são só nossas</h2></div><p>Cada foto guarda um pedacinho da nossa história — e isso aqui ainda está só começando.</p></div><div class="grid" id="photos"></div></section>
+<section id="videos"><div class="head"><div><p class="eyebrow">EM MOVIMENTO</p><h2>Momentos que voltam a viver</h2></div><p>Porque algumas lembranças merecem movimento, som e replay.</p></div><div class="cards" id="videosGrid"></div></section>
+<section id="trilha"><div class="head"><div><p class="eyebrow">NOSSA TRILHA</p><h2>A trilha sonora da gente</h2></div><p>Seis músicas para tocar aqui dentro e deixar cada lembrança ainda mais nossa.</p></div><div class="cards" id="songs"></div></section>
 <section id="carta"><article class="letter glass"><p class="eyebrow">PARA VOCÊ</p><h2>Victoria,</h2><p>Este espaço foi feito para guardar aquilo que o tempo não deveria apagar: os lugares, os detalhes, as músicas e os momentos que fazem a nossa história ser nossa.</p><p>Quero que, sempre que você abrir este app, encontre um pedaço bonito do que já vivemos e uma lembrança de tudo o que ainda quero viver ao seu lado.</p><p class="sign">Com amor, Marcos.</p></article></section>
 </main>
 <footer><span>Feito para nós.</span><span id="status">PWA preparada para uso offline.</span></footer>
@@ -48,49 +81,49 @@ dialog{width:min(950px,94vw);padding:0;border-radius:26px;border:1px solid var(-
 <script>
 const CONFIG={
 photos:[
-["assets/photos/01.jpg","Nosso momento 01","Uma lembrança nossa para guardar."],
-["assets/photos/02.jpg","Nosso momento 02","Seu sorriso merece um lugar especial aqui."],
-["assets/photos/03.jpg","Nosso momento 03","Um registro leve, espontâneo e lindo."],
-["assets/photos/04.jpg","Nosso momento 04","Um jantar que virou memória boa."],
-["assets/photos/05.jpg","Nosso momento 05","Mais um momento simples que ficou especial."],
-["assets/photos/06.png","Nosso momento 06","Nosso lado bravo também ficou fofo."],
-["assets/photos/07.png","Nosso momento 07","E o nosso lado apaixonado também."],
-["assets/photos/08.jpg","Nosso momento 08","Sol, praia e nós dois."],
-["assets/photos/09.jpg","Nosso momento 09","Uma foto nossa para lembrar para sempre."],
-["assets/photos/10.jpg","Nosso momento 10","Uma noite especial que ficou registrada."],
-["assets/photos/11.jpg","Nosso momento 11","Um abraço apertado e aquele sorriso dela."],
-["assets/photos/12.jpg","Nosso momento 12","Um instante calmo, bonito e cheio de carinho."],
-["assets/photos/13.jpg","Nosso momento 13","Um momento nosso, leve e iluminado."],
-["assets/photos/14.jpg","Nosso momento 14","Os dois juntos, do jeitinho que a gente gosta."],
-["assets/photos/15.jpg","Nosso momento 15","Mais um clique espontâneo para a coleção."],
-["assets/photos/16.jpg","Nosso momento 16","Um retrato bonito dela para guardar com carinho."],
-["assets/photos/17.jpg","Nosso momento 17","Um detalhe cheio de significado."],
-["assets/photos/18.jpg","Nosso momento 18","Um espelho, nós dois e mais uma boa memória."],
-["assets/photos/19.jpg","Nosso momento 19","Mais um retrato dela para deixar a galeria ainda mais completa."],
-["assets/photos/20.jpg","Nosso momento 20","Uma noite divertida com um toque mexicano."],
-["assets/photos/21.jpg","Nosso momento 21","Um gesto de carinho cheio de amor e surpresa."],
-["assets/photos/22.jpg","Nosso momento 22","Nós dois em modo brincalhão."],
-["assets/photos/23.jpg","Nosso momento 23","Ela concentrada, linda até nos detalhes simples."],
-["assets/photos/24.jpg","Nosso momento 24","Mais um registro dela com esse sorriso leve."],
-["assets/photos/25.jpg","Nosso momento 25","Um beijo para eternizar na galeria."],
-["assets/photos/26.jpg","Nosso momento 26","Um clique nosso em clima de festa junina."],
-["assets/photos/27.jpg","Nosso momento 27","Mais um momento tranquilo nosso para guardar."],
-["assets/photos/28.jpg","Nosso momento 28","Ela linda em mais uma noite especial."],
-["assets/photos/29.jpg","Nosso momento 29","Nós dois em clima de festa e diversão."],
-["assets/photos/30.jpg","Nosso momento 30","Um sorriso dela que merece ficar salvo aqui."],
-["assets/photos/31.jpg","Nosso momento 31","Mais uma lembrança cheia de cor e carinho."],
-["assets/photos/32.jpg","Nosso momento 32","Ela e seus prêmios, em um momento fofo e divertido."],
-["assets/photos/33.jpg","Nosso momento 33","Nós dois em um clique leve e espontâneo."],
-["assets/photos/34.jpg","Nosso momento 34","Nosso jantar com uma pose divertida."],
-["assets/photos/35.jpg","Nosso momento 35","Outra pose divertida para a nossa coleção."],
-["assets/photos/36.jpg","Nosso momento 36","Um espelho, nós dois e mais uma memória bonita."],
-["assets/photos/37.jpg","Nosso momento 37","Um clique divertido e bem espontâneo para a nossa coleção."],
-["assets/photos/38.jpg","Nosso momento 38","Um espelho, um beijo e mais uma lembrança linda nossa."],
-["assets/photos/39.jpg","Nosso momento 39","Mais um retrato nosso, elegante e cheio de carinho."],
-["assets/photos/40.jpg","Nosso momento 40","Um beijo cheio de afeto para guardar para sempre."],
-["assets/photos/41.jpg","Nosso momento 41","Outro beijo lindo, daqueles que viram memória favorita."],
-["assets/photos/42.jpg","Nosso momento 42","Um close apaixonado, com todo o charme dela."],
-["assets/photos/43.jpg","Nosso momento 43","Nós dois arrumados e lindos em mais uma foto especial."]
+["assets/photos/01.jpg","Nosso momento 01","Foi aqui que uma lembrança virou parte da nossa história."],
+["assets/photos/02.jpg","Nosso momento 02","Seu sorriso sempre melhora qualquer lugar."],
+["assets/photos/03.jpg","Nosso momento 03","Você deixa até os momentos simples com cara de memória favorita."],
+["assets/photos/04.jpg","Nosso momento 04","Uma noite qualquer que ficou especial porque era com você."],
+["assets/photos/05.jpg","Nosso momento 05","Quando estou com você, até o comum vira inesquecível."],
+["assets/photos/06.png","Nosso momento 06","Até nosso jeitinho bravo consegue ser fofo."],
+["assets/photos/07.png","Nosso momento 07","Meu lugar favorito continua sendo perto de você."],
+["assets/photos/08.jpg","Nosso momento 08","Sol, mar e nós dois — difícil querer mais alguma coisa."],
+["assets/photos/09.jpg","Nosso momento 09","Uma daquelas fotos que eu abriria só para sentir saudade."],
+["assets/photos/10.jpg","Nosso momento 10","Mais uma noite que eu escolheria viver de novo."],
+["assets/photos/11.jpg","Nosso momento 11","Seu abraço tem esse jeito de fazer tudo ficar bem."],
+["assets/photos/12.jpg","Nosso momento 12","Com você, os instantes tranquilos também ficam marcados."],
+["assets/photos/13.jpg","Nosso momento 13","Você ilumina até as fotos mais simples."],
+["assets/photos/14.jpg","Nosso momento 14","Nós dois juntos sempre combinam."],
+["assets/photos/15.jpg","Nosso momento 15","Mais um momento espontâneo que virou lembrança."],
+["assets/photos/16.jpg","Nosso momento 16","Ela, linda como sempre — e eu com sorte de poder guardar isso."],
+["assets/photos/17.jpg","Nosso momento 17","Pequenos detalhes também contam a nossa história."],
+["assets/photos/18.jpg","Nosso momento 18","Um espelho registrando exatamente onde eu gosto de estar."],
+["assets/photos/19.jpg","Nosso momento 19","Mais uma versão sua que eu quero lembrar para sempre."],
+["assets/photos/20.jpg","Nosso momento 20","Uma noite divertida do nosso jeito."],
+["assets/photos/21.jpg","Nosso momento 21","Carinho também mora nas pequenas surpresas."],
+["assets/photos/22.jpg","Nosso momento 22","Nós dois sendo nós dois — talvez seja isso que eu mais ame."],
+["assets/photos/23.jpg","Nosso momento 23","Até concentrada você consegue ser linda."],
+["assets/photos/24.jpg","Nosso momento 24","Esse sorriso merece aparecer muitas vezes por aqui."],
+["assets/photos/25.jpg","Nosso momento 25","Um beijo que merecia mesmo virar fotografia."],
+["assets/photos/26.jpg","Nosso momento 26","Nosso clima de festa, nossa bagunça, nossa memória."],
+["assets/photos/27.jpg","Nosso momento 27","Um momento tranquilo que eu não trocaria por nada."],
+["assets/photos/28.jpg","Nosso momento 28","Ela linda, como se isso ainda fosse novidade."],
+["assets/photos/29.jpg","Nosso momento 29","Festa boa é aquela em que eu posso olhar para o lado e te encontrar."],
+["assets/photos/30.jpg","Nosso momento 30","Tem sorriso seu que eu queria conseguir guardar fora da foto também."],
+["assets/photos/31.jpg","Nosso momento 31","Mais cor para uma história que já é bonita."],
+["assets/photos/32.jpg","Nosso momento 32","Seu jeito divertido é uma das minhas coisas favoritas."],
+["assets/photos/33.jpg","Nosso momento 33","Uma foto nossa que parece exatamente a gente."],
+["assets/photos/34.jpg","Nosso momento 34","Até pose boba vira lembrança boa quando é com você."],
+["assets/photos/35.jpg","Nosso momento 35","Mais uma prova de que a gente sabe se divertir junto."],
+["assets/photos/36.jpg","Nosso momento 36","Um espelho, nós dois e mais um capítulo nosso."],
+["assets/photos/37.jpg","Nosso momento 37","Esse nosso jeito espontâneo é o que deixa tudo mais verdadeiro."],
+["assets/photos/38.jpg","Nosso momento 38","Um beijo no espelho e mais uma lembrança que ganhou lugar aqui."],
+["assets/photos/39.jpg","Nosso momento 39","Nós dois arrumados, mas ainda com o mesmo jeito de sempre."],
+["assets/photos/40.jpg","Nosso momento 40","Beijos seus ainda são um dos meus lugares favoritos."],
+["assets/photos/41.jpg","Nosso momento 41","Se eu pudesse escolher um replay, muitos começariam assim."],
+["assets/photos/42.jpg","Nosso momento 42","Um close seu e mais um motivo para sorrir olhando a galeria."],
+["assets/photos/43.jpg","Nosso momento 43","Nós dois, mais uma vez, exatamente onde eu queria estar."]
 ],
 videos:[
 ["assets/videos/01.mp4","Nosso vídeo 01","O primeiro vídeo salvo no nosso app."],
@@ -99,12 +132,12 @@ videos:[
 ["assets/videos/04.mp4","Nosso vídeo 04","Um vídeo que completa ainda mais a nossa história."]
 ],
 songs:[
-["Nossa música 01","YouTube Music","https://music.youtube.com/watch?v=vuU7cdAkK5Q&si=RpkUWojyyydBqYul"],
-["Nossa música 02","YouTube Music","https://music.youtube.com/watch?v=X_4jJ-766Bk&si=KAcxptqPGle2gokj"],
-["Nossa música 03","YouTube Music","https://music.youtube.com/watch?v=5ZEXW5Hm6b0&si=J95gOhkAkSaLLK6H"],
+["Faixa especial 01","Nossa trilha","https://music.youtube.com/watch?v=vuU7cdAkK5Q&si=RpkUWojyyydBqYul"],
+["Faixa especial 02","Nossa trilha","https://music.youtube.com/watch?v=X_4jJ-766Bk&si=KAcxptqPGle2gokj"],
+["Faixa especial 03","Nossa trilha","https://music.youtube.com/watch?v=5ZEXW5Hm6b0&si=J95gOhkAkSaLLK6H"],
 ["Until I Found You","Stephen Sanchez","https://music.youtube.com/watch?v=znvky0Uq8qc&si=YbLsINg-geGZZLAq"],
-["Nossa música 05","YouTube Music","https://music.youtube.com/watch?v=RuEvLv_S4YA&si=nlmSUsfBUlFByhFv"],
-["Nossa música 06","YouTube Music","https://music.youtube.com/watch?v=z-R4RKa97ZQ&si=LsUXozB3ezEbCwIW"]
+["Faixa especial 05","Nossa trilha","https://music.youtube.com/watch?v=RuEvLv_S4YA&si=nlmSUsfBUlFByhFv"],
+["Faixa especial 06","Nossa trilha","https://music.youtube.com/watch?v=z-R4RKa97ZQ&si=LsUXozB3ezEbCwIW"]
 ]};
 const pg=document.getElementById("photos");
 CONFIG.photos.forEach(function(p){const a=document.createElement("article");a.className="photo";const im=new Image();im.src=p[0];im.alt=p[1];im.loading="lazy";const ph=document.createElement("div");ph.className="placeholder";ph.innerHTML="<div><strong>Imagem indisponível</strong><br><small>Esta foto será sincronizada novamente.</small></div>";ph.style.display="none";im.onerror=function(){im.style.display="none";ph.style.display="grid"};a.append(im,ph);const c=document.createElement("div");c.className="cap";c.innerHTML="<strong>"+p[1]+"</strong><span>"+p[2]+"</span>";a.append(c);a.onclick=function(){if(im.style.display==='none')return;document.getElementById("big").src=p[0];document.getElementById("dt").textContent=p[1];document.getElementById("dd").textContent=p[2];document.getElementById("dialog").showModal()};pg.append(a)});
