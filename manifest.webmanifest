@@ -1,0 +1,10 @@
+{
+  "name":"Para Victoria",
+  "short_name":"Victoria",
+  "description":"Um cantinho para guardar nossa história.",
+  "start_url":"./",
+  "display":"standalone",
+  "background_color":"#0d0812",
+  "theme_color":"#120b18",
+  "icons":[{"src":"assets/icons/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
