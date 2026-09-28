@@ -34,7 +34,7 @@ dialog{width:min(950px,94vw);padding:0;border-radius:26px;border:1px solid var(-
 </section>
 <section id="momentos"><div class="head"><div><p class="eyebrow">MEMÓRIAS</p><h2>Nossos registros</h2></div><p>A galeria agora já conta com 43 fotos e continua pronta para crescer até 100 fotos ou mais.</p></div><div class="grid" id="photos"></div></section>
 <section id="videos"><div class="head"><div><p class="eyebrow">EM MOVIMENTO</p><h2>Nossos momentos em vídeo</h2></div><p>Agora já temos 4 vídeos salvos para reviver nossos momentos.</p></div><div class="cards" id="videosGrid"></div></section>
-<section id="trilha"><div class="head"><div><p class="eyebrow">NOSSA TRILHA</p><h2>Músicas que lembram a gente</h2></div><p>Depois eu adiciono os links oficiais das músicas do Luan Santana que você quiser.</p></div><div class="cards" id="songs"></div></section>
+<section id="trilha"><div class="head"><div><p class="eyebrow">NOSSA TRILHA</p><h2>Músicas que lembram a gente</h2></div><p>Seis músicas especiais para abrir direto no YouTube Music.</p></div><div class="cards" id="songs"></div></section>
 <section id="carta"><article class="letter glass"><p class="eyebrow">PARA VOCÊ</p><h2>Victoria,</h2><p>Este espaço foi feito para guardar aquilo que o tempo não deveria apagar: os lugares, os detalhes, as músicas e os momentos que fazem a nossa história ser nossa.</p><p>Quero que, sempre que você abrir este app, encontre um pedaço bonito do que já vivemos e uma lembrança de tudo o que ainda quero viver ao seu lado.</p><p class="sign">Com amor, Marcos.</p></article></section>
 </main>
 <footer><span>Feito para nós.</span><span id="status">PWA preparada para uso offline.</span></footer>
@@ -93,9 +93,12 @@ videos:[
 ["assets/videos/04.mp4","Nosso vídeo 04","Um vídeo que completa ainda mais a nossa história."]
 ],
 songs:[
-["Música especial 01","Luan Santana","#"],
-["Música especial 02","Luan Santana","#"],
-["Música especial 03","Luan Santana","#"]
+["Nossa música 01","YouTube Music","https://music.youtube.com/watch?v=vuU7cdAkK5Q&si=RpkUWojyyydBqYul"],
+["Nossa música 02","YouTube Music","https://music.youtube.com/watch?v=X_4jJ-766Bk&si=KAcxptqPGle2gokj"],
+["Nossa música 03","YouTube Music","https://music.youtube.com/watch?v=5ZEXW5Hm6b0&si=J95gOhkAkSaLLK6H"],
+["Until I Found You","Stephen Sanchez","https://music.youtube.com/watch?v=znvky0Uq8qc&si=YbLsINg-geGZZLAq"],
+["Nossa música 05","YouTube Music","https://music.youtube.com/watch?v=RuEvLv_S4YA&si=nlmSUsfBUlFByhFv"],
+["Nossa música 06","YouTube Music","https://music.youtube.com/watch?v=z-R4RKa97ZQ&si=LsUXozB3ezEbCwIW"]
 ]};
 const pg=document.getElementById("photos");
 CONFIG.photos.forEach(function(p){const a=document.createElement("article");a.className="photo";const im=new Image();im.src=p[0];im.alt=p[1];im.loading="lazy";const ph=document.createElement("div");ph.className="placeholder";ph.innerHTML="<div><strong>Imagem indisponível</strong><br><small>Esta foto será sincronizada novamente.</small></div>";ph.style.display="none";im.onerror=function(){im.style.display="none";ph.style.display="grid"};a.append(im,ph);const c=document.createElement("div");c.className="cap";c.innerHTML="<strong>"+p[1]+"</strong><span>"+p[2]+"</span>";a.append(c);a.onclick=function(){if(im.style.display==='none')return;document.getElementById("big").src=p[0];document.getElementById("dt").textContent=p[1];document.getElementById("dd").textContent=p[2];document.getElementById("dialog").showModal()};pg.append(a)});
