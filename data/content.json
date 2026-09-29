@@ -4,7 +4,8 @@
     "title": "Nosso Dia 3",
     "subtitle": "Eu quis transformar nossas fotos e nossos vídeos em um lugar com a nossa cara. Nosso espaço.. para lembrar como é bom viver tudo isso com você.",
     "coverTitle": "",
-    "coverSubtitle": "Vou guardar para sempre."
+    "coverSubtitle": "Vou guardar para sempre.",
+    "coverImage": "assets/photos/cover.jpg"
   },
   "sections": {
     "photosTitle": "Nossas memórias",
