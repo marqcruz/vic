@@ -8,33 +8,33 @@
   },
   "sections": {
     "photosTitle": "Nossas memórias",
-    "photosText": "Cada foto daqui tem um pedaço real da nossa história. Só o nosso jeito, as nossas brincadeiras e o amor que aparece em cada detalhe.",
+    "photosText": "Cada foto daqui tem um pedaço real da nossa história. Só o nosso jeito…",
     "videosTitle": "Nossos vídeos",
-    "videosText": "Alguns momentos pedem movimento, voz e um pouco mais de vida.",
+    "videosText": "Detalhes importantes e espontâneos",
     "musicTitle": "Nossa trilha sonora",
-    "musicText": "Player nativo no app, usando os trechos que escolhemos para a nossa história.",
+    "musicText": "Trechos que escolhemos para a nossa história.",
     "bibleTitle": "Palavra que me lembra nós",
     "bibleText": "Alguns versículos que combinam com parceria, cuidado e o que eu peço a Deus para o nosso caminho."
   },
   "videos": [
     {
       "src": "assets/videos/01.mp4",
-      "title": "Nosso vídeo 1",
-      "caption": "Mais um pedacinho nosso em movimento."
+      "title": "Surpresa",
+      "caption": "Deu tudo certo, a surpresa foi boa"
     },
     {
       "src": "assets/videos/02.mp4",
-      "title": "Nosso vídeo 2",
+      "title": "Um dia comum pra gente",
       "caption": "Um momento daqueles que vale rever várias vezes."
     },
     {
       "src": "assets/videos/03.mp4",
-      "title": "Nosso vídeo 3",
-      "caption": "Porque algumas lembranças ficam ainda melhores em vídeo."
+      "title": "Um dia especial",
+      "caption": "Nosso jeito."
     },
     {
       "src": "assets/videos/04.mp4",
-      "title": "Nosso vídeo 4",
+      "title": "Caipiras",
       "caption": "Mais um registro para lembrar o quanto é bom viver tudo isso com você."
     }
   ],
