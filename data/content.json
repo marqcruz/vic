@@ -2,10 +2,9 @@
   "hero": {
     "pill": "Um cantinho para guardar nós dois",
     "title": "Nosso Dia 3",
-    "subtitle": "Eu quis transformar nossas fotos, nossos vídeos e a nossa trilha em um lugar com a nossa cara. Um lugar leve, bonito e cheio de afeto, para lembrar como é bom viver tudo isso com você.",
-    "coverTitle": "Apenas nós!",
-    "coverSubtitle": "Vou guardar para sempre.",
-    "coverImage": "assets/photos/36.jpg"
+    "subtitle": "Eu quis transformar nossas fotos e nossos vídeos em um lugar com a nossa cara. Nosso espaço.. para lembrar como é bom viver tudo isso com você.",
+    "coverTitle": "",
+    "coverSubtitle": "Vou guardar para sempre."
   },
   "sections": {
     "photosTitle": "Nossas memórias",
