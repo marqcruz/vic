@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#140913">
+<title>Admin | Nosso Dia 3</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap');
+:root{--bg:#120813;--panel:rgba(255,255,255,.075);--line:rgba(255,255,255,.12);--text:#fff7fb;--muted:#d7c8da;--pink:#ff78c8;--lav:#d3a6ff;--ok:#9ff0c0;--bad:#ff9aa9}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,sans-serif;background:radial-gradient(circle at 10% 0%,rgba(255,120,200,.18),transparent 28%),radial-gradient(circle at 90% 15%,rgba(211,166,255,.16),transparent 30%),linear-gradient(180deg,#120813,#211021 48%,#0b060e);color:var(--text);min-height:100vh}button,input,textarea{font:inherit}.wrap{width:min(1100px,calc(100% - 24px));margin:auto;padding:24px 0 80px}.top{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:22px}.brand{display:flex;gap:12px;align-items:center}.heart{width:44px;height:44px;display:grid;place-items:center;border-radius:15px;background:linear-gradient(135deg,var(--pink),var(--lav));color:#35112f;font-size:1.3rem}.top h1{font-family:'Playfair Display',serif;margin:0;font-size:clamp(1.8rem,5vw,2.8rem)}a{color:#ffd3ea}.panel{background:var(--panel);border:1px solid var(--line);border-radius:26px;padding:20px;backdrop-filter:blur(18px);margin-bottom:18px}.panel h2{margin:0 0 14px;font-size:1.15rem}.muted{color:var(--muted);line-height:1.6}.row{display:grid;grid-template-columns:1fr auto;gap:10px}.token{width:100%;padding:13px 14px;border-radius:14px;border:1px solid var(--line);background:rgba(0,0,0,.18);color:white}.btn{padding:12px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.08);color:white;cursor:pointer}.btn.primary{background:linear-gradient(135deg,var(--pink),var(--lav));color:#35112f;border:0;font-weight:800}.btn:disabled{opacity:.5;cursor:not-allowed}.status{margin-top:12px;font-size:.92rem}.ok{color:var(--ok)}.bad{color:var(--bad)}
+.upload{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field label{display:block;font-size:.85rem;color:var(--muted);margin-bottom:7px}.field input,.field textarea{width:100%;padding:12px 13px;border-radius:14px;border:1px solid var(--line);background:rgba(0,0,0,.18);color:white}.field textarea{min-height:100px;resize:vertical}.preview{min-height:180px;border:1px dashed rgba(255,255,255,.18);border-radius:18px;display:grid;place-items:center;overflow:hidden;color:var(--muted)}.preview img{width:100%;height:100%;max-height:300px;object-fit:cover}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.item{display:grid;grid-template-columns:140px 1fr;gap:14px;padding:12px;border-radius:20px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.08)}.item img{width:140px;height:160px;object-fit:cover;border-radius:14px;background:#111}.item textarea{width:100%;height:112px;padding:11px;border-radius:12px;border:1px solid var(--line);background:rgba(0,0,0,.2);color:white;resize:vertical}.item small{display:block;color:var(--muted);margin-bottom:7px}.sticky{position:sticky;bottom:10px;display:flex;justify-content:flex-end;margin-top:18px}.sticky .btn{box-shadow:0 14px 40px rgba(0,0,0,.35)}
+@media(max-width:760px){.top{align-items:flex-start}.row,.upload{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.item{grid-template-columns:100px 1fr}.item img{width:100px;height:130px}}
+</style>
+</head>
+<body><div class="wrap">
+<div class="top"><div class="brand"><div class="heart">❤</div><div><h1>Admin Nosso Dia 3</h1><div class="muted">Fotos e frases da galeria</div></div></div><a href="./">Abrir app</a></div>
+
+<section class="panel">
+<h2>1. Conectar ao GitHub</h2>
+<p class="muted">Use um token fine-grained do GitHub com permissão <strong>Contents: Read and write</strong> somente para o repositório <strong>marqcruz/vic</strong>. O token fica apenas nesta aba e não é salvo no site.</p>
+<div class="row"><input class="token" id="token" type="password" autocomplete="off" placeholder="github_pat_..."><button class="btn primary" id="connect">Conectar</button></div>
+<div class="status" id="status">Aguardando conexão.</div>
+</section>
+
+<section class="panel">
+<h2>2. Adicionar nova foto</h2>
+<div class="upload">
+<div>
+<div class="field"><label>Foto</label><input id="file" type="file" accept="image/*"></div>
+<div class="field" style="margin-top:12px"><label>Frase da foto</label><textarea id="newCaption" placeholder="Escreva a frase que deve aparecer na foto"></textarea></div>
+<button class="btn primary" id="upload" style="margin-top:12px" disabled>Enviar foto</button>
+</div>
+<div class="preview" id="preview">Prévia da foto</div>
+</div>
+</section>
+
+<section class="panel">
+<h2>3. Alterar frases</h2>
+<p class="muted">Edite qualquer frase abaixo e toque em <strong>Salvar todas as frases</strong>. A página principal passa a ler este arquivo automaticamente.</p>
+<div class="grid" id="list"><div class="muted">Conecte ao GitHub para carregar as fotos.</div></div>
+<div class="sticky"><button class="btn primary" id="save" disabled>Salvar todas as frases</button></div>
+</section>
+</div>
+
+<script>
+const OWNER='marqcruz', REPO='vic', BRANCH='main', DATA_PATH='data/photos.json';
+let token='', photos=[], dataSha='';
+const $=id=>document.getElementById(id);
+function setStatus(msg,type=''){ $('status').textContent=msg; $('status').className='status '+type; }
+function headers(){return {'Accept':'application/vnd.github+json','Authorization':'Bearer '+token,'X-GitHub-Api-Version':'2022-11-28'};}
+function bytesToB64(bytes){let bin='';const chunk=0x8000;for(let i=0;i<bytes.length;i+=chunk)bin+=String.fromCharCode(...bytes.subarray(i,i+chunk));return btoa(bin);}
+function textToB64(text){return bytesToB64(new TextEncoder().encode(text));}
+function b64ToText(b64){const bin=atob(b64.replace(/\n/g,''));const bytes=Uint8Array.from(bin,c=>c.charCodeAt(0));return new TextDecoder().decode(bytes);}
+async function api(path,opts={}){const r=await fetch('https://api.github.com/repos/'+OWNER+'/'+REPO+'/'+path,{...opts,headers:{...headers(),...(opts.headers||{})}});if(!r.ok){let m='Erro '+r.status;try{const j=await r.json();m=j.message||m}catch{}throw new Error(m)}return r.json();}
+async function loadData(){setStatus('Carregando fotos...');const f=await api('contents/'+DATA_PATH+'?ref='+BRANCH);dataSha=f.sha;photos=JSON.parse(b64ToText(f.content));render();$('save').disabled=false;$('upload').disabled=false;setStatus('Conectado. '+photos.length+' fotos carregadas.','ok');}
+function render(){const list=$('list');list.innerHTML='';photos.forEach((p,i)=>{const card=document.createElement('article');card.className='item';card.innerHTML='<img src="'+p[0]+'?v='+Date.now()+'" alt=""><div><small>'+p[0]+'</small><textarea data-i="'+i+'"></textarea></div>';card.querySelector('textarea').value=p[2]||'';list.append(card);});}
+async function saveData(message){const content=JSON.stringify(photos,null,2);const body={message,content:textToB64(content),sha:dataSha,branch:BRANCH};const r=await api('contents/'+DATA_PATH,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});dataSha=r.content.sha;return r;}
+async function imageToJpeg(file){const url=URL.createObjectURL(file);try{const img=new Image();img.src=url;await img.decode();const max=1800;let w=img.naturalWidth,h=img.naturalHeight;if(Math.max(w,h)>max){const scale=max/Math.max(w,h);w=Math.round(w*scale);h=Math.round(h*scale)}const canvas=document.createElement('canvas');canvas.width=w;canvas.height=h;const ctx=canvas.getContext('2d');ctx.drawImage(img,0,0,w,h);const blob=await new Promise((res,rej)=>canvas.toBlob(b=>b?res(b):rej(new Error('Falha ao converter imagem')),'image/jpeg',.88));return new Uint8Array(await blob.arrayBuffer());}finally{URL.revokeObjectURL(url)}}
+$('connect').onclick=async()=>{token=$('token').value.trim();if(!token){setStatus('Cole o token do GitHub.','bad');return}try{await loadData()}catch(e){setStatus(e.message,'bad')}};
+$('file').onchange=()=>{const f=$('file').files[0];if(!f)return;const url=URL.createObjectURL(f);$('preview').innerHTML='<img src="'+url+'">';};
+$('save').onclick=async()=>{try{document.querySelectorAll('textarea[data-i]').forEach(t=>photos[+t.dataset.i][2]=t.value.trim());setStatus('Salvando frases...');await saveData('Atualiza frases das fotos pelo admin');setStatus('Frases salvas no GitHub. O Pages pode levar alguns instantes para refletir.','ok')}catch(e){setStatus(e.message,'bad')}};
+$('upload').onclick=async()=>{const file=$('file').files[0],caption=$('newCaption').value.trim();if(!file){setStatus('Escolha uma foto.','bad');return}if(!caption){setStatus('Escreva uma frase para a foto.','bad');return}try{$('upload').disabled=true;setStatus('Preparando e enviando a foto...');const nums=photos.map(p=>{const m=p[0].match(/(\d+)\.[a-z0-9]+$/i);return m?+m[1]:0});const next=Math.max(0,...nums)+1;const name=String(next).padStart(2,'0')+'.jpg';const path='assets/photos/'+name;const bytes=await imageToJpeg(file);await api('contents/'+path,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:'Adiciona foto '+name+' pelo admin',content:bytesToB64(bytes),branch:BRANCH})});photos.push([path,'',caption]);await saveData('Adiciona foto '+name+' à galeria');render();$('file').value='';$('newCaption').value='';$('preview').textContent='Prévia da foto';setStatus('Foto '+name+' enviada e adicionada à galeria.','ok')}catch(e){setStatus(e.message,'bad')}finally{$('upload').disabled=false}};
+</script></body></html>
