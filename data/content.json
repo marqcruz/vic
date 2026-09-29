@@ -1,0 +1,99 @@
+{
+  "hero": {
+    "pill": "Um cantinho para guardar nós dois",
+    "title": "Nosso Dia 3",
+    "subtitle": "Eu quis transformar nossas fotos, nossos vídeos e a nossa trilha em um lugar com a nossa cara. Um lugar leve, bonito e cheio de afeto, para lembrar como é bom viver tudo isso com você.",
+    "coverTitle": "Você arrumada e eu completamente rendido",
+    "coverSubtitle": "Tem foto que não precisa de legenda, mas mesmo assim eu quis guardar para sempre."
+  },
+  "sections": {
+    "photosTitle": "Nossas memórias",
+    "photosText": "Cada foto daqui tem um pedaço real da nossa história. Só o nosso jeito, as nossas brincadeiras e o amor que aparece em cada detalhe.",
+    "videosTitle": "Nossos vídeos",
+    "videosText": "Alguns momentos pedem movimento, voz e um pouco mais de vida.",
+    "musicTitle": "Nossa trilha sonora",
+    "musicText": "Player nativo no app, usando os trechos que escolhemos para a nossa história.",
+    "bibleTitle": "Palavra que me lembra nós",
+    "bibleText": "Alguns versículos que combinam com parceria, cuidado e o que eu peço a Deus para o nosso caminho."
+  },
+  "videos": [
+    {
+      "src": "assets/videos/01.mp4",
+      "title": "Nosso vídeo 1",
+      "caption": "Mais um pedacinho nosso em movimento."
+    },
+    {
+      "src": "assets/videos/02.mp4",
+      "title": "Nosso vídeo 2",
+      "caption": "Um momento daqueles que vale rever várias vezes."
+    },
+    {
+      "src": "assets/videos/03.mp4",
+      "title": "Nosso vídeo 3",
+      "caption": "Porque algumas lembranças ficam ainda melhores em vídeo."
+    },
+    {
+      "src": "assets/videos/04.mp4",
+      "title": "Nosso vídeo 4",
+      "caption": "Mais um registro para lembrar o quanto é bom viver tudo isso com você."
+    }
+  ],
+  "songs": [
+    {
+      "src": "assets/audio/01-ilha.m4a",
+      "title": "Ilha",
+      "description": "Trecho especial da nossa trilha"
+    },
+    {
+      "src": "assets/audio/02-peaches.m4a",
+      "title": "Peaches",
+      "description": "Trecho especial da nossa trilha"
+    },
+    {
+      "src": "assets/audio/03-meu-sol.m4a",
+      "title": "Meu Sol",
+      "description": "Trecho especial da nossa trilha"
+    },
+    {
+      "src": "assets/audio/04-until-i-found-you.m4a",
+      "title": "Until I Found You",
+      "description": "Trecho especial da nossa trilha"
+    },
+    {
+      "src": "assets/audio/05-agua-com-acucar.m4a",
+      "title": "Água com Açúcar",
+      "description": "Trecho especial da nossa trilha"
+    },
+    {
+      "src": "assets/audio/06-chuva-de-arroz.m4a",
+      "title": "Chuva de Arroz",
+      "description": "Trecho especial da nossa trilha"
+    }
+  ],
+  "bible": [
+    {
+      "reference": "Eclesiastes 4:9 e 10",
+      "text": "Dois são melhores do que um, porque juntos seguem mais fortes e levantam um ao outro quando o caminho pesa.",
+      "note": "Isso me lembra parceria e presença."
+    },
+    {
+      "reference": "1 Coríntios 13:7",
+      "text": "O amor cuida, suporta, acredita, espera e continua firme mesmo quando os dias não são simples.",
+      "note": "É esse tipo de amor que eu quero construir com você."
+    },
+    {
+      "reference": "Cantares 8:7",
+      "text": "Nem muitas águas conseguem apagar um amor verdadeiro.",
+      "note": "Quando penso na gente, penso em algo para guardar e fazer crescer."
+    }
+  ],
+  "letter": {
+    "title": "Uma carta para você",
+    "paragraphs": [
+      "Eu fiz esse espaço porque gosto da ideia de ter um lugar que seja nosso. Um lugar que guarde a sua risada, o seu olhar, o seu jeito de me beijar, as nossas brincadeiras e até aquelas fotos espontâneas que só fazem sentido porque foram vividas por nós dois.",
+      "O mais bonito não é cada foto sozinha. É a história inteira que elas contam. Tem carinho, festa, jantar, descanso, bagunça, beijo, surpresa, música e aquela companhia que deixa qualquer momento melhor.",
+      "Quando olho para tudo o que já vivemos, eu sinto gratidão a Deus por ter colocado você no meu caminho. Que a nossa história continue sendo cuidada com amor, paciência, parceria e verdade."
+    ],
+    "signature": "Com amor, Marcos."
+  }
+}
