@@ -1,10 +1,17 @@
 {
-  "name":"Para Victoria",
-  "short_name":"Victoria",
-  "description":"Um cantinho para guardar nossa história.",
-  "start_url":"./",
-  "display":"standalone",
-  "background_color":"#0d0812",
-  "theme_color":"#120b18",
-  "icons":[{"src":"assets/icons/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+  "name": "Nosso Dia 3",
+  "short_name": "Dia 3",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#140913",
+  "theme_color": "#140913",
+  "description": "Um app romântico com nossas fotos, vídeos e trilha sonora.",
+  "icons": [
+    {
+      "src": "assets/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
 }
