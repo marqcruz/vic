@@ -5,7 +5,9 @@
     "subtitle": "Eu quis transformar nossas fotos e nossos vídeos em um lugar com a nossa cara. Nosso espaço.. para lembrar como é bom viver tudo isso com você.",
     "coverTitle": "",
     "coverSubtitle": "Vou guardar para sempre.",
-    "coverImage": "assets/photos/cover.jpg"
+    "coverImage": "assets/photos/cover.jpg",
+    "coverType": "image",
+    "coverVideo": "assets/videos/cover.mp4"
   },
   "sections": {
     "photosTitle": "Nossas memórias",
