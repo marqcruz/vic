@@ -10,7 +10,7 @@
 :root{--bg:#120813;--panel:rgba(255,255,255,.075);--line:rgba(255,255,255,.12);--text:#fff7fb;--muted:#d7c8da;--pink:#ff78c8;--lav:#d3a6ff;--ok:#9ff0c0;--bad:#ff9aa9}
 *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,sans-serif;background:radial-gradient(circle at 10% 0%,rgba(255,120,200,.18),transparent 28%),radial-gradient(circle at 90% 15%,rgba(211,166,255,.16),transparent 30%),linear-gradient(180deg,#120813,#211021 48%,#0b060e);color:var(--text);min-height:100vh}button,input,textarea{font:inherit}.wrap{width:min(1100px,calc(100% - 24px));margin:auto;padding:24px 0 80px}.top{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:22px}.brand{display:flex;gap:12px;align-items:center}.heart{width:44px;height:44px;display:grid;place-items:center;border-radius:15px;background:linear-gradient(135deg,var(--pink),var(--lav));color:#35112f;font-size:1.3rem}.top h1{font-family:'Playfair Display',serif;margin:0;font-size:clamp(1.8rem,5vw,2.8rem)}a{color:#ffd3ea}.panel{background:var(--panel);border:1px solid var(--line);border-radius:26px;padding:20px;backdrop-filter:blur(18px);margin-bottom:18px}.panel h2{margin:0 0 14px;font-size:1.15rem}.muted{color:var(--muted);line-height:1.6}.row{display:grid;grid-template-columns:1fr auto;gap:10px}.token{width:100%;padding:13px 14px;border-radius:14px;border:1px solid var(--line);background:rgba(0,0,0,.18);color:white}.btn{padding:12px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.08);color:white;cursor:pointer}.btn.primary{background:linear-gradient(135deg,var(--pink),var(--lav));color:#35112f;border:0;font-weight:800}.btn:disabled{opacity:.5;cursor:not-allowed}.status{margin-top:12px;font-size:.92rem}.ok{color:var(--ok)}.bad{color:var(--bad)}
 .upload{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field label{display:block;font-size:.85rem;color:var(--muted);margin-bottom:7px}.field input,.field textarea{width:100%;padding:12px 13px;border-radius:14px;border:1px solid var(--line);background:rgba(0,0,0,.18);color:white}.field textarea{min-height:100px;resize:vertical}.preview{min-height:180px;border:1px dashed rgba(255,255,255,.18);border-radius:18px;display:grid;place-items:center;overflow:hidden;color:var(--muted)}.preview img{width:100%;height:100%;max-height:300px;object-fit:cover}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.item{display:grid;grid-template-columns:140px 1fr;gap:14px;padding:12px;border-radius:20px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.08)}.item img{width:140px;height:160px;object-fit:cover;border-radius:14px;background:#111}.item textarea{width:100%;height:112px;padding:11px;border-radius:12px;border:1px solid var(--line);background:rgba(0,0,0,.2);color:white;resize:vertical}.item small{display:block;color:var(--muted);margin-bottom:7px}.sticky{position:sticky;bottom:10px;display:flex;justify-content:flex-end;margin-top:18px}.sticky .btn{box-shadow:0 14px 40px rgba(0,0,0,.35)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.item{display:grid;grid-template-columns:140px 1fr;gap:14px;padding:12px;border-radius:20px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.08)}.item img{width:140px;height:160px;object-fit:cover;border-radius:14px;background:#111}.item textarea{width:100%;height:112px;padding:11px;border-radius:12px;border:1px solid var(--line);background:rgba(0,0,0,.2);color:white;resize:vertical}.item small{display:block;color:var(--muted);margin-bottom:7px}.replaceRow{display:flex;gap:8px;flex-wrap:wrap;margin-top:9px}.replaceRow input[type=file]{max-width:210px;color:var(--muted);font-size:.8rem}.mini{padding:9px 11px;border-radius:11px;font-size:.82rem}.sticky{position:sticky;bottom:10px;display:flex;justify-content:flex-end;margin-top:18px}.sticky .btn{box-shadow:0 14px 40px rgba(0,0,0,.35)}
 @media(max-width:760px){.top{align-items:flex-start}.row,.upload{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.item{grid-template-columns:100px 1fr}.item img{width:100px;height:130px}}
 </style>
 </head>
@@ -37,8 +37,8 @@
 </section>
 
 <section class="panel">
-<h2>3. Alterar frases</h2>
-<p class="muted">Edite qualquer frase abaixo e toque em <strong>Salvar todas as frases</strong>. A página principal passa a ler este arquivo automaticamente.</p>
+<h2>3. Alterar qualquer foto ou frase</h2>
+<p class="muted">Em cada item você pode trocar a imagem mantendo a mesma posição da galeria e editar a frase. Para as frases, use <strong>Salvar todas as frases</strong>.</p>
 <div class="grid" id="list"><div class="muted">Conecte ao GitHub para carregar as fotos.</div></div>
 <div class="sticky"><button class="btn primary" id="save" disabled>Salvar todas as frases</button></div>
 </section>
@@ -55,11 +55,49 @@ function textToB64(text){return bytesToB64(new TextEncoder().encode(text));}
 function b64ToText(b64){const bin=atob(b64.replace(/\n/g,''));const bytes=Uint8Array.from(bin,c=>c.charCodeAt(0));return new TextDecoder().decode(bytes);}
 async function api(path,opts={}){const r=await fetch('https://api.github.com/repos/'+OWNER+'/'+REPO+'/'+path,{...opts,headers:{...headers(),...(opts.headers||{})}});if(!r.ok){let m='Erro '+r.status;try{const j=await r.json();m=j.message||m}catch{}throw new Error(m)}return r.json();}
 async function loadData(){setStatus('Carregando fotos...');const f=await api('contents/'+DATA_PATH+'?ref='+BRANCH);dataSha=f.sha;photos=JSON.parse(b64ToText(f.content));render();$('save').disabled=false;$('upload').disabled=false;setStatus('Conectado. '+photos.length+' fotos carregadas.','ok');}
-function render(){const list=$('list');list.innerHTML='';photos.forEach((p,i)=>{const card=document.createElement('article');card.className='item';card.innerHTML='<img src="'+p[0]+'?v='+Date.now()+'" alt=""><div><small>'+p[0]+'</small><textarea data-i="'+i+'"></textarea></div>';card.querySelector('textarea').value=p[2]||'';list.append(card);});}
+function render(){const list=$('list');list.innerHTML='';photos.forEach((p,i)=>{const card=document.createElement('article');card.className='item';card.innerHTML='<img id="photo-'+i+'" src="'+p[0]+'?v='+Date.now()+'" alt=""><div><small>'+p[0]+'</small><textarea data-i="'+i+'"></textarea><div class="replaceRow"><input id="replace-file-'+i+'" type="file" accept="image/*"><button class="btn mini" type="button" data-replace="'+i+'">Trocar foto</button></div></div>';card.querySelector('textarea').value=p[2]||'';list.append(card);});document.querySelectorAll('[data-replace]').forEach(btn=>btn.onclick=()=>replacePhoto(+btn.dataset.replace,btn));}
 async function saveData(message){const content=JSON.stringify(photos,null,2);const body={message,content:textToB64(content),sha:dataSha,branch:BRANCH};const r=await api('contents/'+DATA_PATH,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});dataSha=r.content.sha;return r;}
 async function imageToJpeg(file){const url=URL.createObjectURL(file);try{const img=new Image();img.src=url;await img.decode();const max=1800;let w=img.naturalWidth,h=img.naturalHeight;if(Math.max(w,h)>max){const scale=max/Math.max(w,h);w=Math.round(w*scale);h=Math.round(h*scale)}const canvas=document.createElement('canvas');canvas.width=w;canvas.height=h;const ctx=canvas.getContext('2d');ctx.drawImage(img,0,0,w,h);const blob=await new Promise((res,rej)=>canvas.toBlob(b=>b?res(b):rej(new Error('Falha ao converter imagem')),'image/jpeg',.88));return new Uint8Array(await blob.arrayBuffer());}finally{URL.revokeObjectURL(url)}}
+
+async function imageToFormat(file,path){
+  const url=URL.createObjectURL(file);
+  try{
+    const img=new Image(); img.src=url; await img.decode();
+    const max=1800; let w=img.naturalWidth,h=img.naturalHeight;
+    if(Math.max(w,h)>max){const scale=max/Math.max(w,h);w=Math.round(w*scale);h=Math.round(h*scale)}
+    const canvas=document.createElement('canvas'); canvas.width=w; canvas.height=h;
+    canvas.getContext('2d').drawImage(img,0,0,w,h);
+    const png=/\.png$/i.test(path), type=png?'image/png':'image/jpeg', quality=png?undefined:.88;
+    const blob=await new Promise((res,rej)=>canvas.toBlob(b=>b?res(b):rej(new Error('Falha ao converter imagem')),type,quality));
+    return new Uint8Array(await blob.arrayBuffer());
+  } finally { URL.revokeObjectURL(url); }
+}
+async function replacePhoto(i,button){
+  const input=$('replace-file-'+i), file=input.files[0];
+  if(!file){setStatus('Escolha a nova imagem para esta foto.','bad');return}
+  const path=photos[i][0];
+  try{
+    button.disabled=true; setStatus('Substituindo '+path+'...');
+    const meta=await api('contents/'+path+'?ref='+BRANCH);
+    const bytes=await imageToFormat(file,path);
+    await api('contents/'+path,{
+      method:'PUT',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        message:'Substitui '+path+' pelo admin',
+        content:bytesToB64(bytes),
+        sha:meta.sha,
+        branch:BRANCH
+      })
+    });
+    const img=$('photo-'+i); img.src=path+'?v='+Date.now();
+    input.value='';
+    setStatus('Foto substituída com sucesso.','ok');
+  }catch(e){setStatus(e.message,'bad')}
+  finally{button.disabled=false}
+}
 $('connect').onclick=async()=>{token=$('token').value.trim();if(!token){setStatus('Cole o token do GitHub.','bad');return}try{await loadData()}catch(e){setStatus(e.message,'bad')}};
 $('file').onchange=()=>{const f=$('file').files[0];if(!f)return;const url=URL.createObjectURL(f);$('preview').innerHTML='<img src="'+url+'">';};
 $('save').onclick=async()=>{try{document.querySelectorAll('textarea[data-i]').forEach(t=>photos[+t.dataset.i][2]=t.value.trim());setStatus('Salvando frases...');await saveData('Atualiza frases das fotos pelo admin');setStatus('Frases salvas no GitHub. O Pages pode levar alguns instantes para refletir.','ok')}catch(e){setStatus(e.message,'bad')}};
-$('upload').onclick=async()=>{const file=$('file').files[0],caption=$('newCaption').value.trim();if(!file){setStatus('Escolha uma foto.','bad');return}if(!caption){setStatus('Escreva uma frase para a foto.','bad');return}try{$('upload').disabled=true;setStatus('Preparando e enviando a foto...');const nums=photos.map(p=>{const m=p[0].match(/(\d+)\.[a-z0-9]+$/i);return m?+m[1]:0});const next=Math.max(0,...nums)+1;const name=String(next).padStart(2,'0')+'.jpg';const path='assets/photos/'+name;const bytes=await imageToJpeg(file);await api('contents/'+path,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:'Adiciona foto '+name+' pelo admin',content:bytesToB64(bytes),branch:BRANCH})});photos.push([path,'',caption]);await saveData('Adiciona foto '+name+' à galeria');render();$('file').value='';$('newCaption').value='';$('preview').textContent='Prévia da foto';setStatus('Foto '+name+' enviada e adicionada à galeria.','ok')}catch(e){setStatus(e.message,'bad')}finally{$('upload').disabled=false}};
+$('upload').onclick=async()=>{const file=$('file').files[0],caption=$('newCaption').value.trim();if(!file){setStatus('Escolha uma foto.','bad');return}if(!caption){setStatus('Escreva uma frase para a foto.','bad');return}try{$('upload').disabled=true;setStatus('Preparando e enviando a foto...');const nums=photos.map(p=>{const m=p[0].match(/(\d+)\.[a-z0-9]+$/i);return m?+m[1]:0});const next=Math.max(0,...nums)+1;const name=String(next).padStart(2,'0')+'.jpg';const path='assets/photos/'+name;const bytes=await imageToFormat(file,path);await api('contents/'+path,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:'Adiciona foto '+name+' pelo admin',content:bytesToB64(bytes),branch:BRANCH})});photos.push([path,'',caption]);await saveData('Adiciona foto '+name+' à galeria');render();$('file').value='';$('newCaption').value='';$('preview').textContent='Prévia da foto';setStatus('Foto '+name+' enviada e adicionada à galeria.','ok')}catch(e){setStatus(e.message,'bad')}finally{$('upload').disabled=false}};
 </script></body></html>
